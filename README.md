@@ -27,6 +27,7 @@ If you contribute at all in any way to the project, please add your name to the 
 - TheGirl790 (OG)
 - kotofyt
 - xtn59
+- c-bass
 - u/EastConsequence3792
 - More people who sadly didn't put their name...
 
