@@ -134,6 +134,8 @@ itos:
 
 	mov	bx, 10			;; Decimal counting system
 	mov	byte [di], 0		;; Adding null terminator
+	buffer db 16 dup(0) 	;; DI not initialised yet
+	mov di, buffer + 15
 	dec	di
 .loop:
 	xor	dx, dx			;; Clearing the remainder of the last division
