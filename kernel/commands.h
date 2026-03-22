@@ -18,6 +18,9 @@ static void cmd_setkeyswe(uint8_t color);
 static void cmd_setkeyus(uint8_t color);
 static void cmd_setkeyuk(uint8_t color);
 
+//ember2819:clear
+static void cmd_clear(uint8_t color);
+
 static int streq(unsigned char *a, char *b);
 void run_command(unsigned char *input, uint8_t color);
 
