@@ -17,7 +17,7 @@
 " ░░█████████ ░░██████  █████░███ █████ █████░███ █████ ░░████████ ████ █████ █████  ░░█████  ░░███████  ░░░███████░  ░░█████████ \n" \
 "  ░░░░░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░ ░░░░░   ░░░░░░░░ ░░░░ ░░░░░ ░░░░░    ░░░░░    ░░░░░███    ░░░░░░░     ░░░░░░░░░  \n" \
 "                                                                                              ███ ░███                           \n" \
-"                                                                                             ░░██████                            \n" \
+"                                                                                             ░░██████                            \n"
 "  
 
 // Ember2819: Add command functionality
@@ -30,7 +30,7 @@ void _entry()
 {
     // Initialise display.
     vga_clear(TERM_COLOR);
-    printf(BANNER\n", TERM_COLOR);
+    printf(BANNER", TERM_COLOR);
     prinf("v0.5", TERM_COLOR);
     printf("Built by random people on the internet.\n", TERM_COLOR);
     printf("Use help to see available commands.\n", TERM_COLOR);
