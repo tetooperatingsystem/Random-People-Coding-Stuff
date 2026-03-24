@@ -24,15 +24,15 @@ static int num_commands = sizeof(commands) / sizeof(commands[0]);
 // ---- Command Functions ----
 
 static void cmd_help(uint8_t color) {
-    printf("\nhelp   - show this message\n", color);
-    printf("hello  - say hello\n", color);
-    printf("contributors - Displays names of all contributors\n", color);
-    printf("setkeyswe - Sets keyboard layout to Swedish QWERTY\n", color); // Zorx555 - Keyboard layout commands
-    printf("setkeyus - Sets keyboard layout to US QWERTY\n", color);
-    printf("setkeyuk - Sets keyboard layout to UK QWERTY\n", color); // MorganPG1 - Add UK Keyboard layout
-    printf("clear  - clear the screen\n", color); //ember
-    printf("version - Version of the operating system\n", color); // TheOtterMonarch - Output version of the OS
-    printf("comos  - run the .comos scripting language\n", color);
+    printf("\nhelp - Show this message\n", color);
+    printf("hello - Say hello\n", color);
+    printf("contributors - Display names of all contributors\n", color);
+    printf("setkeyswe - Set the keyboard layout to Swedish QWERTY\n", color); // Zorx555 - Keyboard layout commands
+    printf("setkeyus - Set the keyboard layout to US QWERTY\n", color);
+    printf("setkeyuk - Set the keyboard layout to UK QWERTY\n", color); // MorganPG1 - Add UK Keyboard layout
+    printf("clear - Clear the screen\n", color); //ember
+    printf("version - Show the current version of the operating system\n", color); // TheOtterMonarch - Output version of the OS
+    printf("comos - Run the .comos scripting language\n", color);
 }
 
 static void cmd_hello(uint8_t color) {
