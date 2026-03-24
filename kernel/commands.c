@@ -25,7 +25,7 @@ static int num_commands = sizeof(commands) / sizeof(commands[0]);
 
 static void cmd_help(uint8_t color) {
     printf("\n\nhelp - Show this message\n\n", color);
-    printf("hello - Say hello\n", color);
+    printf("hello - Say hello\n\n", color);
     printf("contributors - Display names of all contributors\n\n", color);
     printf("setkeyswe - Set the keyboard layout to Swedish QWERTY\n\n", color); // Zorx555 - Keyboard layout commands
     printf("setkeyus - Set the keyboard layout to US QWERTY\n\n", color);
