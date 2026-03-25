@@ -2,7 +2,6 @@
 #include "drivers/vga.h"
 #include "drivers/keyboard.h"
 #include "layouts/kb_layouts.h"
-#include "mem.h"
 #include "terminal/terminal.h"
 #include "commands.h" // Included by Ember2819: Adds commands
 #include "colors.h" // Added by MorganPG1 to centralise colors into one file

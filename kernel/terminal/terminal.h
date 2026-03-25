@@ -3,8 +3,6 @@
 
 #include "../drivers/keyboard.h"
 #include "../drivers/vga.h"
-#include <stdint.h>
-
 
 #define HISTORY_SIZE 10
 static unsigned char history_entries[HISTORY_SIZE][512];
@@ -20,5 +18,8 @@ void terminal_clear(uint8_t color);
 static void history_push(unsigned char* buf);
 
 void input(unsigned char* buff, size_t buffer_size, uint8_t color);
+
+// int to char* (Pumpkicks)
+char* atoi(int n, char* buffer);
 
 #endif

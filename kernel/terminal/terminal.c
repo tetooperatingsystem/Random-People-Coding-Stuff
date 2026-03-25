@@ -1,5 +1,6 @@
 #include "../drivers/keyboard.h"
 #include "../drivers/vga.h"
+#include "../mem.h"
 #include "terminal.h"
 
 uint16_t terminal_column = 0; 
@@ -192,4 +193,35 @@ void input(unsigned char* buff, size_t buffer_size, uint8_t color) {
 
     // Ember2819: arrow recall
     history_push(buff);
+}
+char* atoi(int n, char* buffer) {
+    // Source - https://stackoverflow.com/a/3982385
+
+    int i = 0;
+    bool isNeg = n<0;
+    unsigned int n1 = isNeg ? -n : n;
+
+    while(n1!=0)
+    {
+        buffer[i++] = n1%10+'0';
+        n1=n1/10;
+    }
+
+    if(isNeg)
+        buffer[i++] = '-';
+    buffer[i] = '\0';
+
+    for(int t = 0; t < i/2; t++)
+    {
+        buffer[t] ^= buffer[i-t-1];
+        buffer[i-t-1] ^= buffer[t];
+        buffer[t] ^= buffer[i-t-1];
+    }
+
+    if(n == 0)
+    {
+        buffer[0] = '0';
+        buffer[1] = '\0';
+    }   
+    return buffer;
 }

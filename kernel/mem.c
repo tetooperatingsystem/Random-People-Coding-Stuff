@@ -21,12 +21,20 @@ void* memset(void* dest, int val, unsigned long n) {
     return dest;
 }
 // [Ember2819: END]
+
+// Pumpkicks
+int strlen(char* ptr) {
+    int i = 0;
+    while (ptr[i]) i++;
+    return i;
+}
+
 //replace with real allocator later but should be fine for now
 static unsigned char heap[65536];
 static unsigned long heap_ptr = 0;
 
 void* malloc(unsigned long size) {
-    if (heap_ptr + size > sizeof(heap)) {
+    if ((heap_ptr + size) > sizeof(heap)) {
         return 0;
     }
     void* p = &heap[heap_ptr];

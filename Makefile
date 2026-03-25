@@ -1,6 +1,6 @@
 # By Ember2819, google, and random people on the internet.... What are we doing????
 # C compiler
-CC = clang
+CC = ccache clang
 # Secondary C compiler
 CC2 = gcc
 # Assembler (for boot.s)
@@ -17,7 +17,9 @@ CC_FLAGS = -m32 -ffreestanding -nostdlib -fno-builtin -fno-stack-protector -c
 AS_FLAGS = -f bin
 LD_FLAGS = -m elf_i386 -T linker.ld
 KERNEL_OBJECTS = kernel/kernel.o kernel/ports.o kernel/mem.o
-DRIVER_OBJECTS = kernel/drivers/vga.o kernel/drivers/keyboard.o
+DRIVER_OBJECTS = kernel/drivers/vga.o kernel/drivers/keyboard.o kernel/drivers/tables/descriptor_tables_s.o \
+	kernel/drivers/tables/descriptor_tables_c.o kernel/drivers/tables/isr/isr.o kernel/drivers/tables/irq/irq_c.o \
+	kernel/drivers/tables/irq/irq_s.o kernel/drivers/tables/irq/timer.o
 MISC_OBJECTS = kernel/colors.o kernel/terminal/terminal.o kernel/commands.o kernel/layouts/kb_layouts.o # ADDED
 # Builds the final disk image
 all: os.img
@@ -38,6 +40,20 @@ kernel/drivers/vga.o: kernel/drivers/vga.c
 	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
 kernel/drivers/keyboard.o:  kernel/drivers/keyboard.c
 	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
+# GDT, IDT, IRQ & Timer (Pumpkicks)
+kernel/drivers/tables/descriptor_tables_c.o:  kernel/drivers/tables/descriptor_tables.c
+	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
+kernel/drivers/tables/isr/isr.o:  kernel/drivers/tables/isr/isr.c
+	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
+kernel/drivers/tables/descriptor_tables_s.o:  kernel/drivers/tables/descriptor_tables.s
+	$(AS) -felf32 $< -o $@
+kernel/drivers/tables/irq/irq_c.o:  kernel/drivers/tables/irq/irq.c
+	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
+kernel/drivers/tables/irq/timer.o: kernel/drivers/tables/irq/timer.c
+	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
+kernel/drivers/tables/irq/irq_s.o:  kernel/drivers/tables/irq/irq.s
+	$(AS) -felf32 $< -o $@
+
 kernel/ports.o: kernel/ports.c
 	$(CC) $(CC_FLAGS) $< -o $@ || $(CC2) $(CC_FLAGS) $< -o $@
 kernel/mem.o: kernel/mem.c
